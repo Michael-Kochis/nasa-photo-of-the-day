@@ -9,7 +9,7 @@ function NasaAPI() {
 
     useEffect(() => {
         setNasaData(axios
-            .get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2017-12-14')
+            .get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
             .then((response) => {
                 setNasaData(response.data);
                 console.log(response.data)
