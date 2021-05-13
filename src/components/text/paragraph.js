@@ -1,10 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 
 function Paragraph(props) {
+
+    const RawText = styled.p`
+        color: white;
+        margin: 1rem;
+        text-align: left;
+    `
    return (
-        <p className="left">
+        <RawText>
             {props !== undefined && props.text}
-        </p>
+        </RawText>
     )
 }
 

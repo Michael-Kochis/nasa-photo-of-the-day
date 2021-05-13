@@ -1,10 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
 function PhotoTitle(props) {
+
+    const NasaTitle = styled.h2`
+        color: navy;
+    `
     return (
-        <h2>
+        <NasaTitle>
             {props && props.title}
-        </h2>
+        </NasaTitle>
     )
 }
 

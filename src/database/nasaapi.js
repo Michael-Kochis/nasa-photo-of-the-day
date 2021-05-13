@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
+import styled from 'styled-components'
 import axios from 'axios'
 import { NasaPhoto } from '../components/image/nasaphoto'
 import { NasaVideo } from '../components/video/nasavideo'
+import { PhotoTitle } from '../components/text/photoTitle';
 
 function NasaAPI() {
     let [nasaData, setNasaData] = useState();
     const nasaRef = useRef();
+
+    const NasaDiv = styled.div`
+        background-color: #6F6F6F;
+        border-radius: 1rem;
+    `
 
     useEffect(() => {
         setNasaData(axios
@@ -19,12 +26,13 @@ function NasaAPI() {
     }, [nasaRef]);
 
     return (
-        <div className="nasa">
+        <NasaDiv className="nasa">
+            {nasaData && <PhotoTitle title={`Nasa's Photo of the Day: ${nasaData.date}`}></PhotoTitle>}
             {nasaData && nasaData.media_type === "image" && <NasaPhoto props={nasaData}></NasaPhoto>}
             {nasaData && nasaData.media_type === "video" && <NasaVideo props={nasaData}></NasaVideo>}
 
             {!nasaData && <p>Houston, we have a problem (No data from API).</p>}
-        </div>
+        </NasaDiv>
     )
 }
 
